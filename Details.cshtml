@@ -1,0 +1,40 @@
+﻿@model EMART.Models.Seller
+
+@{
+    ViewData["Title"] = "Details";
+     var PhotoPath = "~/images/" + (Model.PhotoPath ?? "Dora.png");
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Seller</h4>
+    <hr />
+    <div class="row justify-content-center m-3">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>@Model.sname</h3>
+                </div>
+                <div class="card-body text-center">
+                    <img class="card-img-top" src="@PhotoPath"
+                         asp-append-version="true" />
+                    <h4>sellerid: @Model.sid</h4>
+                    <h4>Email: @Model.semail</h4>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-controller="Seller" asp-action="DisplayItem" class="btn btn-primary">Display</a>
+                    <a asp-controller="Seller" asp-action="ADDItem" class="btn btn-primary">ADDITEMS</a>
+                    <a asp-controller="Seller" asp-action="ADD CATEGORY" class="btn btn-primary">ADD CATEGORY</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>*@
+@section Scripts{ 
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
